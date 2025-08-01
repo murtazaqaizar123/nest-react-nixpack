@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ["nodejs-16_x"]
+nixPkgs = ["nodejs-16_x", "yarn"]
 
 [phases.install]
 cmds = ["yarn install"]
@@ -8,4 +8,4 @@ cmds = ["yarn install"]
 cmds = ["yarn run build"]
 
 [start]
-cmd = "yarn start"
+cmd = "npx serve -s build -l $PORT"
