@@ -1,9 +1,12 @@
-import * as mongoose from 'mongoose';
+import mongoose from 'mongoose';
 
-export const BlogSchema = new mongoose.Schema({
-  title: String,
-  description: String,
-  body: String,
-  author: String,
-  date_posted: String
-})
+const uri = process.env.MONGODB_URI;
+
+if (!uri) {
+  throw new Error('MONGODB_URI is not defined in environment variables');
+}
+
+mongoose.connect(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
